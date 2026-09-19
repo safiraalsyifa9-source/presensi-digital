@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Presensi Kelas</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- QR Scanner -->
+    <script src="https://unpkg.com/html5-qrcode" defer></script>
+
+    <!-- QR Generator -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+<div class="container">
+
+    <header class="header">
+        <h1>📋 Presensi Kelas</h1>
+        <p>Presensi mahasiswa menggunakan QR Code</p>
+    </header>
+
+    <!-- STATUS -->
+    <div id="connectionStatus" class="status offline">
+        🔴 Menghubungkan ke server...
+    </div>
+
+    <!-- QR SCANNER -->
+    <section class="card">
+        <h2>📷 Scan QR Mahasiswa</h2>
+
+        <div id="reader"></div>
+
+        <div class="scanner-buttons">
+            <button id="startScanBtn" class="btn primary">
+                ▶ Mulai Scan
+            </button>
+
+            <button id="stopScanBtn" class="btn danger">
+                ⏹ Stop
+            </button>
+
+            <button id="flashBtn" class="btn secondary">
+                🔦 Flash
+            </button>
+        </div>
+
+        <p id="scanStatus" class="scan-status">
+            Kamera belum dimulai
+        </p>
+    </section>
+
+    <!-- HASIL SCAN -->
+    <section class="card">
+        <h2>👤 Data Mahasiswa</h2>
+
+        <div id="studentInfo" class="student-info">
+            <p>Silakan scan QR mahasiswa.</p>
+        </div>
+    </section>
+
+    <!-- QR GENERATOR -->
+    <section class="card">
+        <h2>🎫 Generator QR Mahasiswa</h2>
+
+        <div class="form-group">
+            <label for="studentNim">
+                NIM Mahasiswa
+            </label>
+
+            <input
+                type="text"
+                id="studentNim"
+                placeholder="Masukkan NIM"
+            >
+        </div>
+
+        <button id="generateQrBtn" class="btn primary">
+            🔄 Buat QR
+        </button>
+
+        <div id="qrResult" class="qr-result"></div>
+
+        <button
+            id="downloadQrBtn"
+            class="btn success"
+            style="display:none;"
+        >
+            ⬇ Download QR
+        </button>
+    </section>
+
+    <!-- DATA MAHASISWA -->
+    <section class="card">
+        <div class="section-header">
+            <h2>👨‍🎓 Data Mahasiswa</h2>
+
+            <button id="refreshBtn" class="btn secondary">
+                🔄 Refresh
+            </button>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>NIM</th>
+                        <th>Nama</th>
+                        <th>Kelas</th>
+                        <th>Jurusan</th>
+                    </tr>
+                </thead>
+
+                <tbody id="studentTableBody">
+                    <tr>
+                        <td colspan="5">
+                            Memuat data...
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- ACTION -->
+    <section class="card actions">
+
+        <button
+            id="openSheetBtn"
+            class="btn secondary"
+        >
+            📊 Buka Google Sheet
+        </button>
+
+    </section>
+
+    <footer>
+        <p>
+            Sistem Presensi QR Code
+        </p>
+    </footer>
+
+</div>
+
+</body>
+</html>
